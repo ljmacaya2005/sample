@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <title>Hearth & Bean - Premium Coffee Experience</title>
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.3/examples/product/"
+    />
+    <script src="assets/js/color-modes.js"></script>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Coffee theme primary color - Rich espresso brown -->
+    <meta name="theme-color" content="#6F4E37" />
+    <link href="product.css" rel="stylesheet" />
+    <style>
+      /* ===== SPLASH SCREEN ===== */
+      @keyframes splashFadeOut {
+        0% {
+          opacity: 1;
+          visibility: visible;
+        }
+        95% {
+          opacity: 1;
+          visibility: visible;
+        }
+        100% {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      @keyframes logoScale {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes coffeePour {
+        0% {
+          height: 0;
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          height: 100%;
+          opacity: 1;
+        }
+      }
+
+      @keyframes textReveal {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .splash-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #6F4E37 0%, #A0826D 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: splashFadeOut 3.5s ease-in-out forwards;
+      }
+
+      .splash-content {
+        text-align: center;
+        color: #F5E6D3;
+      }
+
+      .splash-logo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 2rem;
+        animation: logoScale 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .splash-logo svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+      }
+
+      .coffee-cup {
+        width: 80px;
+        height: 100px;
+        border: 3px solid #F5E6D3;
+        border-radius: 0 0 20px 20px;
+        margin: 0 auto 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .coffee-pour {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, #3E2723, #5A4037);
+        animation: coffeePour 1.5s ease-out 0.3s forwards;
+        height: 0;
+      }
+
+      .splash-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 1rem;
+        animation: textReveal 1s ease-out 0.8s both;
+      }
+
+      .splash-subtitle {
+        font-size: 1.1rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        animation: textReveal 1s ease-out 1.2s both;
+        text-transform: uppercase;
+      }
+
+      .loading-dots {
+        margin-top: 2rem;
+        animation: textReveal 1s ease-out 1.6s both;
+      }
+
+      .loading-dots span {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #F5E6D3;
+        margin: 0 4px;
+        animation: bounce 1.4s infinite;
+      }
+
+      .loading-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .loading-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-15px);
+          opacity: 1;
+        }
+      }
+
+      /* ===== PROFESSIONAL ANIMATIONS ===== */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      @keyframes underlineExpand {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes borderGlow {
+        0%, 100% {
+          border-color: rgba(111, 78, 55, 0.3);
+          box-shadow: 0 0 10px rgba(111, 78, 55, 0.2);
+        }
+        50% {
+          border-color: rgba(111, 78, 55, 0.8);
+          box-shadow: 0 0 20px rgba(111, 78, 55, 0.4);
+        }
+      }
+
+      /* ===== PROFESSIONAL STYLING ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: #0000001a;
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em #0000001a, inset 0 0.125em 0.5em #00000026;
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        animation: fadeInDown 0.8s ease-out 3.5s both;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(245, 230, 211, 0.1);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: -0.5px;
+        color: #F5E6D3 !important;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+        color: #F5E6D3 !important;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        height: 2px;
+        background: #F5E6D3;
+        width: 0;
+        transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero-section {
+        animation: fadeInDown 1s ease-out 3.5s both;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(111, 78, 55, 0.45);
+        animation: fadeInDown 1.2s ease-out 3.5s both;
+      }
+
+      .hero-content {
+        animation: fadeInUp 1.2s ease-out 3.8s both;
+        position: relative;
+        z-index: 2;
+      }
+
+      .display-3 {
+        font-weight: 800;
+        letter-spacing: -2px;
+        animation: slideInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 4s both;
+      }
+
+      .hero-subtitle {
+        animation: fadeInUp 1s ease-out 4.2s both;
+        font-size: 1.3rem;
+        font-weight: 300;
+      }
+
+      .hero-links {
+        animation: fadeInUp 1s ease-out 4.4s both;
+        gap: 2rem !important;
+      }
+
+      .icon-link {
+        position: relative;
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #F5E6D3;
+        border-radius: 50px;
+      }
+
+      .icon-link:hover {
+        transform: translateX(10px);
+        background: rgba(245, 230, 211, 0.1);
+        box-shadow: 0 8px 20px rgba(245, 230, 211, 0.2);
+      }
+
+      .icon-link svg {
+        transition: transform 0.3s ease;
+      }
+
+      .icon-link:hover svg {
+        transform: translateX(5px);
+      }
+
+      /* ===== PRODUCT SECTIONS ===== */
+      .product-section {
+        animation: fadeInUp 0.8s ease-out;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .product-section:hover {
+        box-shadow: 0 15px 40px rgba(111, 78, 55, 0.15);
+      }
+
+      .product-section h2 {
+        animation: slideInUp 0.6s ease-out 0.2s both;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .product-section .lead {
+        animation: slideInUp 0.6s ease-out 0.4s both;
+        font-weight: 400;
+        line-height: 1.8;
+      }
+
+      .product-image {
+        animation: scaleIn 0.8s ease-out 0.3s both;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .product-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+        animation: shimmer 3s infinite;
+      }
+
+      .product-image:hover {
+        transform: scale(1.05);
+      }
+
+      /* ===== FEATURES SECTION ===== */
+      #featured-3 {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      #featured-3 h2 {
+        animation: slideInUp 0.6s ease-out 0.2s both;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      #featured-3 h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #6F4E37;
+        border-radius: 3px;
+        animation: underlineExpand 0.6s ease-out 0.4s both;
+      }
+
+      .feature.col {
+        animation: fadeInUp 0.6s ease-out;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .feature.col:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .feature.col:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .feature.col:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .feature.col:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 50px rgba(111, 78, 55, 0.2);
+      }
+
+      .feature.col img {
+        animation: scaleIn 0.7s ease-out;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-radius: 15px;
+        position: relative;
+      }
+
+      .feature.col img::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 15px;
+        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+        animation: shimmer 3s infinite;
+      }
+
+      .feature.col:hover img {
+        transform: scale(1.08);
+        filter: brightness(1.1);
+      }
+
+      .feature.col h3 {
+        animation: slideInUp 0.6s ease-out 0.2s both;
+        font-weight: 700;
+        color: #6F4E37;
+      }
+
+      /* ===== PRICING SECTION ===== */
+      #pricing {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      #pricing h2 {
+        animation: slideInUp 0.6s ease-out 0.2s both;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      #pricing h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #6F4E37;
+        border-radius: 3px;
+        animation: underlineExpand 0.6s ease-out 0.4s both;
+      }
+
+      .card {
+        animation: fadeInUp 0.6s ease-out;
+        border: none;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-radius: 20px !important;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(111, 78, 55, 0.25) !important;
+      }
+
+      .card-header {
+        animation: fadeInDown 0.6s ease-out 0.1s both;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      .card img {
+        animation: scaleIn 0.7s ease-out;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .card:hover img {
+        transform: scale(1.1);
+        filter: brightness(1.15);
+      }
+
+      .card-title {
+        animation: slideInUp 0.5s ease-out 0.3s both;
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .card-body ul {
+        animation: fadeInUp 0.6s ease-out 0.4s both;
+      }
+
+      .card-body button {
+        animation: fadeInUp 0.6s ease-out 0.5s both;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        font-weight: 600;
+        border-radius: 10px !important;
+        background: linear-gradient(135deg, #6F4E37 0%, #5A3E2B 100%);
+        border: none !important;
+        color: #F5E6D3 !important;
+      }
+
+      .card-body button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(111, 78, 55, 0.4);
+      }
+
+      /* ===== SUPPORT SECTION ===== */
+      #support {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      #support h2,
+      .contact-heading {
+        animation: slideInUp 0.6s ease-out 0.2s both;
+        font-weight: 700;
+      }
+
+      #support > .text-center p,
+      .contact-heading.sub {
+        animation: fadeInUp 0.6s ease-out 0.4s both;
+      }
+
+      .contact-box {
+        animation: fadeInLeft 0.8s ease-out 0.2s both;
+        border-radius: 20px !important;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid transparent;
+        animation: fadeInLeft 0.8s ease-out 0.2s both, borderGlow 3s ease-in-out infinite;
+      }
+
+      .contact-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(111, 78, 55, 0.3) !important;
+      }
+
+      .form-box {
+        animation: fadeInRight 0.8s ease-out 0.2s both;
+        border-radius: 20px !important;
+      }
+
+      .form-control {
+        animation: scaleIn 0.6s ease-out 0.3s both;
+        border-radius: 12px !important;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid #ddd !important;
+        background: #F5E6D3 !important;
+      }
+
+      .form-control:focus {
+        box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.1) !important;
+        transform: scale(1.02);
+        border-color: #6F4E37 !important;
+      }
+
+      #support button {
+        animation: slideInUp 0.6s ease-out 0.6s both;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        font-weight: 600;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #6F4E37 0%, #5A3E2B 100%);
+        border: none !important;
+      }
+
+      #support button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(111, 78, 55, 0.3);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        animation: fadeInUp 0.8s ease-out;
+        border-top: 1px solid rgba(111, 78, 55, 0.1);
+      }
+
+      /* ===== COFFEE THEME BUTTON ===== */
+      .btn-bd-primary {
+        --bd-coffee-main: #6F4E37;
+        --bd-coffee-rgb: 111, 78, 55;
+        --bd-coffee-light: #A0826D;
+        --bd-coffee-dark: #5A3E2B;
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: #F5E6D3;
+        --bs-btn-bg: var(--bd-coffee-main);
+        --bs-btn-border-color: var(--bd-coffee-main);
+        --bs-btn-hover-color: #F5E6D3;
+        --bs-btn-hover-bg: #5A3E2B;
+        --bs-btn-hover-border-color: #5A3E2B;
+        --bs-btn-focus-shadow-rgb: var(--bd-coffee-rgb);
+        --bs-btn-active-color: #F5E6D3;
+        --bs-btn-active-bg: var(--bd-coffee-dark);
+        --bs-btn-active-border-color: var(--bd-coffee-dark);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .btn-bd-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(111, 78, 55, 0.3);
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+        animation: fadeInUp 1s ease-out 4s both;
+      }
+
+      .bd-mode-toggle .bi {
+        width: 1em;
+        height: 1em;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+
+      /* ===== SCROLL ANIMATION ===== */
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .display-3 {
+          font-size: 2rem;
+        }
+
+        .splash-title {
+          font-size: 1.8rem;
+        }
+
+        .hero-links {
+          flex-direction: column;
+          gap: 1rem !important;
+        }
+
+        .icon-link {
+          justify-content: center;
+        }
+
+        .card {
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SPLASH SCREEN -->
+    <div class="splash-screen" id="splashScreen">
+      <div class="splash-content">
+        <div class="coffee-cup">
+          <div class="coffee-pour"></div>
+        </div>
+        <h1 class="splash-title">Hearth & Bean</h1>
+        <p class="splash-subtitle">Premium Coffee Experience</p>
+        <div class="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SVG SYMBOLS -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+      </symbol>
+      <symbol id="cart" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+      </symbol>
+      <symbol id="chevron-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+      </symbol>
+    </svg>
+
+    <!-- THEME TOGGLE -->
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md sticky-top border-bottom" style="background-color: #6F4E37;" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand d-md-none" href="#">Hearth & Bean</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Hearth & Bean</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav flex-grow-1 justify-content-between">
+              <li class="nav-item"><a class="nav-link" href="#featured-3">Features</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+              <li class="nav-item"><a class="nav-link" href="#support">Visit Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="#top">Tour</a></li>
+              <li class="nav-item"><a class="nav-link" href="#" aria-label="Cart"><svg class="bi" width="24" height="24" aria-hidden="true"><use xlink:href="#cart"></use></svg></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- HERO SECTION -->
+      <div class="hero-section position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background: url('./assets/Pic/rustic.png') center / cover no-repeat; min-height: 60vh;">
+        <div class="hero-content col-md-6 p-lg-5 mx-auto my-5">
+          <h1 class="display-3 fw-bold" style="color: #F5E6D3;">Hearth & Bean</h1>
+          <h3 class="hero-subtitle fw-normal" style="color: #F5E6D3;">Where comfort brews and stories steep.</h3>
+          <div class="hero-links d-flex gap-3 justify-content-center lead fw-normal">
+            <a class="icon-link" href="#support" style="color: #F5E6D3; text-decoration: none;">
+              visit us now!
+              <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT SECTIONS -->
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #6F4E37; color: #F5E6D3;">
+          <h2 class="display-5">Signature Espresso</h2>
+          <p class="lead">Bold, rich, and full of aroma — our signature espresso wakes you up the right way.</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #A0826D;">
+            <img src="./assets/Pic/steamin.png" alt="Signature Espresso" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #F5E6D3;">
+          <h2 class="display-5" style="color: #6F4E37;">Velvety Latte</h2>
+          <p class="lead" style="color: #A0826D;">Smooth, creamy, and comforting—every sip is a warm hug in a cup.</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #6F4E37;">
+            <img src="./assets/Pic/velvety.png" alt="Velvety Latte" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #F5E6D3;">
+          <h2 class="display-5" style="color: #6F4E37;">Mocha Delight</h2>
+          <p class="lead" style="color: #A0826D;">Chocolate and coffee in perfect harmony—indulge your sweet side without guilt.</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #6F4E37;">
+            <img src="./assets/Pic/mocha.jpg" alt="Mocha Delight" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #A0826D; color: #F5E6D3;">
+          <h2 class="display-5">Caramel Macchiato</h2>
+          <p class="lead">Sweet caramel meets rich espresso for a treat you deserve any time of day.</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #F5E6D3;">
+            <img src="./assets/Pic/caramel.jpg" alt="Caramel Macchiato" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #F5E6D3;">
+          <h2 class="display-5" style="color: #6F4E37;">Cold Brew Bliss</h2>
+          <p class="lead" style="color: #A0826D;">Refreshing, smooth, and energizing—perfect for sunny afternoons or a pick-me-up.</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #E8D5C4;">
+            <img src="./assets/Pic/cold.jpg" alt="Cold Brew Bliss" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #A0826D;">
+          <h2 class="display-5" style="color: #6F4E37;">Hazelnut Heaven</h2>
+          <p class="lead" style="color: #F5E6D3;">Nutty aroma, smooth flavor, a coffee experience that keeps you coming back.</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #E8D5C4;">
+            <img src="./assets/Pic/hazel.jpg" alt="Hazelnut Heaven" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+
+      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #6F4E37;">
+          <h2 class="display-5" style="color: #A0826D;">Cappuccino Classic</h2>
+          <p class="lead" style="color: #F5E6D3;">Light, frothy, and timeless—our cappuccino never goes out of style.</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #E8D5C4;">
+            <img src="./assets/Pic/steamin.png" alt="Cappuccino Classic" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+        <div class="product-section me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #F5E6D3;">
+          <h2 class="display-5" style="color: #6F4E37;">Seasonal Special</h2>
+          <p class="lead" style="color: #A0826D;">Limited-time flavors crafted to make every sip unforgettable. Try it before it's gone!</p>
+          <div class="product-image mx-auto shadow-lg" style="width: 80%; height: 300px; background-color: #E8D5C4;">
+            <img src="./assets/Pic/delight.jpg" alt="Seasonal Special" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FEATURES SECTION -->
+    <div class="container px-4 py-5" id="featured-3">
+      <h2 class="pb-2 border-bottom">Why Choose Hearth & Bean</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="feature col">
+          <img src="assets/Pic/out1.jpg" class="img-fluid rounded mb-3" alt="Cozy cafe interior" style="height: 220px; object-fit: cover; width: 100%;">
+          <h3 class="fs-2 text-body-emphasis">Cozy Atmosphere</h3>
+          <p>Step into a warm and relaxing space designed for comfort — soft lights, gentle music, and the welcoming aroma of freshly brewed coffee.</p>
+        </div>
+        <div class="feature col">
+          <img src="assets/Pic/out2.jpg" class="img-fluid rounded mb-3" alt="Barista crafting drink" style="height: 220px; object-fit: cover; width: 100%;">
+          <h3 class="fs-2 text-body-emphasis">Freshly Brewed Drinks</h3>
+          <p>Every cup is crafted with care using quality beans, rich flavors, and perfect blends — hot, iced, or sweet just the way you like it.</p>
+        </div>
+        <div class="feature col">
+          <img src="assets/Pic/out3.jpg" class="img-fluid rounded mb-3" alt="Fresh pastries" style="height: 220px; object-fit: cover; width: 100%;">
+          <h3 class="fs-2 text-body-emphasis">Delicious Treats</h3>
+          <p>Pair your coffee with freshly baked pastries and snacks — perfect for studying, meetings, or slow afternoons with friends.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bd-example-snippet bd-code-snippet">
+      <div class="bd-example m-0 border-0">
+        <img src="assets/Pic/coff.jpg" class="img-fluid rounded" alt="Coffee showcase" style="height:350px; object-fit:cover; width:100%;">
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- PRICING SECTION -->
+    <div class="container px-4" id="pricing">
+      <div class="text-center mb-5">
+        <h2 style="color:#6F4E37; font-weight:700;">Our top picks!</h2>
+        <p style="color:#A0826D; font-size:1.1rem;">Choose your favorite coffee experience!</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+        <div class="col">
+          <div class="card shadow-sm h-100" style="background-color:#F5E6D3; border:none;">
+            <div class="card-header py-3" style="background-color:#6F4E37; color:white; border:none;">
+              <h5 class="my-0 fw-bold">Classic Brew</h5>
+            </div>
+            <div class="p-4 d-flex justify-content-center">
+              <img src="assets/Pic/brew.jpg" class="img-fluid rounded" alt="Classic Coffee" style="height:240px; object-fit:cover; width:100%;">
+            </div>
+            <div class="card-body text-center">
+              <h6 class="card-title" style="color:#6F4E37;">₱99</h6>
+              <ul class="list-unstyled mt-3 mb-4" style="color:#4e3a2b;">
+                <li>✓ Arabica beans</li>
+                <li>✓ Smooth taste</li>
+                <li>✓ Morning favorite</li>
+              </ul>
+              <button class="w-100 btn btn-outline-primary btn-sm" 
+                      style="color:#6F4E37; border-color:#6F4E37; border-width:2px; font-weight:600;"
+                      onclick="location.href='#support'">
+                      Visit us
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100" style="background-color:#F5E6D3; border:none;">
+            <div class="card-header py-3" style="background-color:#6F4E37; color:white; border:none;">
+              <h5 class="my-0 fw-bold">Iced Latte</h5>
+            </div>
+            <div class="p-4 d-flex justify-content-center">
+              <img src="assets/Pic/latte.jpg" class="img-fluid rounded" alt="Iced Latte" style="height:240px; object-fit:cover; width:100%;">
+            </div>
+            <div class="card-body text-center">
+              <h6 class="card-title" style="color:#6F4E37;">₱129</h6>
+              <ul class="list-unstyled mt-3 mb-4" style="color:#4e3a2b;">
+                <li>✓ Fresh milk</li>
+                <li>✓ Chilled</li>
+                <li>✓ Popular choice</li>
+              </ul>
+              <button class="w-100 btn btn-outline-primary btn-sm" 
+                      style="color:#6F4E37; border-color:#6F4E37; border-width:2px; font-weight:600;"
+                      onclick="location.href='#support'">
+                      Visit us
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm h-100" style="background-color:#F5E6D3; border:none;">
+            <div class="card-header py-3" style="background-color:#6F4E37; color:white; border:none;">
+              <h5 class="my-0 fw-bold">Premium Roast</h5>
+            </div>
+            <div class="p-4 d-flex justify-content-center">
+              <img src="assets/Pic/prem.jpg" class="img-fluid rounded" alt="Premium Coffee" style="height:240px; object-fit:cover; width:100%;">
+            </div>
+            <div class="card-body text-center">
+              <h6 class="card-title" style="color:#6F4E37;">₱179</h6>
+              <ul class="list-unstyled mt-3 mb-4" style="color:#4e3a2b;">
+                <li>✓ Strong flavor</li>
+                <li>✓ Hand-roasted</li>
+                <li>✓ Premium quality</li>
+              </ul>
+              <button class="w-100 btn btn-outline-primary btn-sm" 
+                      style="color:#6F4E37; border-color:#6F4E37; border-width:2px; font-weight:600;" 
+                      onclick="location.href='#support'">
+                      Visit us
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- SUPPORT SECTION -->
+    <div class="container-fluid py-5 px-3" id="support">
+      <div class="text-center mb-5">
+        <h2 class="contact-heading" style="color:#6F4E37; font-weight:700; font-size:2.5rem;">Get in Touch</h2>
+        <p class="contact-heading sub" style="color:#A0826D; font-size:1.1rem;">We'd love to hear from you. Let's connect!</p>
+      </div>
+
+      <div class="container">
+        <div class="row justify-content-center g-4">
+          <div class="col-lg-4">
+            <div class="contact-box p-5 rounded-4 shadow-lg text-center" style="background-color:#6F4E37; color:#F5E6D3;">
+              <h4 style="font-weight:700; margin-bottom:1.5rem;">📍 Visit Us</h4>
+              <p style="font-size:1.1rem; line-height:1.8;">123 Coffee Street<br>Your City, State 12345</p>
+              <p style="margin-top:1.5rem; font-size:0.95rem;">Monday - Sunday<br>7:00 AM - 9:00 PM</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="contact-box p-5 rounded-4 shadow-lg text-center" style="background-color:#A0826D; color:#F5E6D3;">
+              <h4 style="font-weight:700; margin-bottom:1.5rem;">☎️ Contact</h4>
+              <p style="font-size:1.1rem; line-height:1.8;"><strong>Phone:</strong> +63 912 345 6789</p>
+              <p style="margin-top:1rem; line-height:1.8;"><strong>Email:</strong><br>hello@hearthandbean.com</p>
+              <p style="margin-top:1.5rem; font-size:0.95rem;">We respond within 24 hours</p>
+            </div>
+          </div>
+
+         
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- FOOTER -->
+    <footer class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary" style="font-weight:500;">
+          &copy; 2025 Hearth & Bean. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Splash screen auto-hide
+      window.addEventListener('load', () => {
+        const splash = document.getElementById('splashScreen');
+        setTimeout(() => {
+          splash.style.animation = 'splashFadeOut 0.5s ease-in-out forwards';
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>
